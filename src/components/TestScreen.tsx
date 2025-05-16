@@ -40,6 +40,13 @@ const TestScreen: React.FC<TestScreenProps> = ({ onStop, startTest }) => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
+      {/* Instruction text - only show before test has started */}
+      {!testStarted && (
+        <p className="text-gray-500 text-sm mono tracking-widest mb-4">
+          STOP AT 10 SECONDS
+        </p>
+      )}
+
       {/* Minimal clock visualization */}
       <div className="relative w-80 h-80 mb-12">
         <div className="absolute inset-0 rounded-full border border-white/20 flex items-center justify-center overflow-hidden">
@@ -76,12 +83,6 @@ const TestScreen: React.FC<TestScreenProps> = ({ onStop, startTest }) => {
       >
         {testStarted ? 'STOP' : 'START'}
       </button>
-
-      {testStarted && (
-        <p className="mt-6 text-gray-500 text-sm mono tracking-widest">
-          STOP AT 10 SECONDS
-        </p>
-      )}
     </div>
   );
 };
