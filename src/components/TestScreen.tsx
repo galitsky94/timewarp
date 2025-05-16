@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 interface TestScreenProps {
   onStop: () => void;
+  startTest: () => void;
 }
 
-const TestScreen: React.FC<TestScreenProps> = ({ onStop }) => {
+const TestScreen: React.FC<TestScreenProps> = ({ onStop, startTest }) => {
   const [showTip, setShowTip] = useState(true);
+  const [testStarted, setTestStarted] = useState(false);
 
   // Create an array of 60 markers to represent seconds
   const clockMarkers = Array.from({ length: 60 }, (_, i) => {
@@ -26,16 +28,15 @@ const TestScreen: React.FC<TestScreenProps> = ({ onStop }) => {
     );
   });
 
-  // Hide tip after 1.5 seconds
-  useEffect(() => {
-    const tipTimer = setTimeout(() => {
+  // Handle start button click
+  const handleStart = () => {
+    setTestStarted(true);
+    startTest(); // Start the time tracking
+    // Hide tip after 1.5 seconds
+    setTimeout(() => {
       setShowTip(false);
     }, 1500);
-
-    return () => {
-      clearTimeout(tipTimer);
-    };
-  }, []);
+  };
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
@@ -47,36 +48,40 @@ const TestScreen: React.FC<TestScreenProps> = ({ onStop }) => {
           {/* Center point */}
           <div className="absolute w-3 h-3 rounded-full bg-white z-10"></div>
 
-          {/* Second hand - use the same animation as welcome page */}
-          <div
-            className="absolute w-0.5 bg-white/80 animate-rotate"
-            style={{
-              height: '150px',
-              bottom: '50%',
-              left: '50%',
-              transformOrigin: 'bottom center',
-              zIndex: 5
-            }}
-          ></div>
+          {/* Second hand - only show before test starts */}
+          {!testStarted && (
+            <div
+              className="absolute w-0.5 bg-white/80 animate-rotate"
+              style={{
+                height: '150px',
+                bottom: '50%',
+                left: '50%',
+                transformOrigin: 'bottom center',
+                zIndex: 5
+              }}
+            ></div>
+          )}
         </div>
       </div>
 
-      {showTip && (
+      {testStarted && showTip && (
         <div className="absolute text-white/50 text-sm animate-fade-out mono tracking-wide">
           Feel the time passing...
         </div>
       )}
 
       <button
-        onClick={onStop}
+        onClick={testStarted ? onStop : handleStart}
         className="bg-white text-black font-mono text-xl py-4 px-12 rounded-full hover:bg-white/90 transition-colors"
       >
-        STOP
+        {testStarted ? 'STOP' : 'START'}
       </button>
 
-      <p className="mt-6 text-gray-500 text-sm mono tracking-widest">
-        STOP AT 10 SECONDS
-      </p>
+      {testStarted && (
+        <p className="mt-6 text-gray-500 text-sm mono tracking-widest">
+          STOP AT 10 SECONDS
+        </p>
+      )}
     </div>
   );
 };

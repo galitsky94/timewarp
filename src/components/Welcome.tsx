@@ -55,7 +55,7 @@ const Welcome: React.FC<WelcomeProps> = ({ onStart }) => {
         onClick={onStart}
         className="bg-white text-black text-lg font-mono px-8 py-3 rounded-full hover:bg-white/90 transition-colors"
       >
-        START
+        Let's find out
       </button>
     </div>
   );

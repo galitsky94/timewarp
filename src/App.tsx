@@ -9,19 +9,20 @@ const App: React.FC = () => {
   const { isRunning, result, startTest, stopTest, resetTest } = useTimeWarp();
 
   const handleStartTest = () => {
-    startTest();
+    // Only navigate to test screen, don't start timing yet
+    resetTest();
     setCurrentScreen('test');
   };
 
   const handleStopTest = () => {
+    // This gets called when the user clicks STOP after starting the test
     stopTest();
     setCurrentScreen('results');
   };
 
   const handleTryAgain = () => {
     resetTest();
-    startTest(); // Start the test immediately
-    setCurrentScreen('test'); // Go directly to test screen
+    setCurrentScreen('test'); // Go back to test screen (not the welcome screen)
   };
 
   return (
@@ -32,7 +33,7 @@ const App: React.FC = () => {
         )}
 
         {currentScreen === 'test' && (
-          <TestScreen onStop={handleStopTest} />
+          <TestScreen onStop={handleStopTest} startTest={startTest} />
         )}
 
         {currentScreen === 'results' && result && (
