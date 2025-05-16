@@ -17,8 +17,8 @@ const Welcome: React.FC<WelcomeProps> = ({ onStart }) => {
         key={i}
         className={`time-marker ${isMainHour ? 'bg-white/70' : isHour ? 'bg-white/50' : 'bg-white/30'}`}
         style={{
-          transform: `rotate(${i * 6}deg) translateY(-120px)`,
-          height: isMainHour ? '16px' : isHour ? '12px' : '8px'
+          transform: `rotate(${i * 6}deg) translateY(-150px)`,
+          height: isMainHour ? '18px' : isHour ? '14px' : '8px'
         }}
       />
     );
@@ -26,14 +26,14 @@ const Welcome: React.FC<WelcomeProps> = ({ onStart }) => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full px-4 text-center max-w-xl mx-auto">
-      <div className="relative w-64 h-64 mb-8">
+      <div className="relative w-80 h-80 mb-8">
         <div className="absolute inset-0 rounded-full border border-white/20 flex items-center justify-center">
           {clockMarkers}
           <div className="absolute w-3 h-3 rounded-full bg-white z-10"></div>
           <div
             className="absolute w-0.5 bg-white/80 animate-rotate"
             style={{
-              height: '120px',
+              height: '150px',
               bottom: '50%',
               left: '50%',
               transformOrigin: 'bottom center',
