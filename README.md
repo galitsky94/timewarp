@@ -1,50 +1,61 @@
-# React + TypeScript + Vite
+# TIME WARP
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimalist web app that tests your perception of time.
 
-Currently, two official plugins are available:
+## About
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Time Warp is a simple yet fascinating test of how you perceive the passage of time. The concept is straightforward: try to stop the timer exactly at 10 seconds without counting. The results reveal whether your internal clock runs faster or slower than actual time.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Clean, minimalist design with a focus on user experience
+- Beautiful clock visualization
+- Fun result categories based on your time perception
+- Shareable results
+- Mobile-friendly interface
 
-- Configure the top-level `parserOptions` property like this:
+## Live Demo
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+You can try the live application here: [Time Warp](https://same-9wmu659t8xr-latest.netlify.app)
+
+## Technology Stack
+
+- React
+- TypeScript
+- Tailwind CSS
+- Vite
+
+## Local Development
+
+To run this project locally:
+
+```bash
+# Clone the repository
+git clone https://github.com/galitsky94/timewarp.git
+
+# Navigate to the project directory
+cd timewarp
+
+# Install dependencies
+bun install
+
+# Start the development server
+bun run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## How It Works
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. Users are presented with a minimalist clock face and the question "Is your mind faster than time?"
+2. Upon pressing START, they watch a subtle animation of a clock hand
+3. When they believe 10 seconds have passed, they press STOP
+4. Results show how close they were to the actual 10-second mark
+5. Users receive a category label based on their time perception (e.g., "Time Master", "Time Rusher")
+6. Results can be shared on social media
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## License
+
+MIT
+
+---
+
+Created with ❤️ as an experiment in human time perception
