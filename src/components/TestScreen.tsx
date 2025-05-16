@@ -40,10 +40,10 @@ const TestScreen: React.FC<TestScreenProps> = ({ onStop, startTest }) => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
-      <div className="flex flex-col items-center justify-between h-[600px]">
+      <div className="flex flex-col items-center gap-6">
         {/* Instruction text - only show before test has started */}
         {!testStarted && (
-          <p className="text-gray-400 text-lg mono tracking-widest mb-8">
+          <p className="text-gray-400 text-lg mono tracking-widest">
             STOP AT 10 SECONDS
           </p>
         )}
@@ -80,7 +80,7 @@ const TestScreen: React.FC<TestScreenProps> = ({ onStop, startTest }) => {
 
         <button
           onClick={testStarted ? onStop : handleStart}
-          className="bg-white text-black font-mono text-xl py-4 px-12 rounded-full hover:bg-white/90 transition-colors mt-8"
+          className="bg-white text-black font-mono text-xl py-4 px-12 rounded-full hover:bg-white/90 transition-colors"
         >
           {testStarted ? 'STOP' : 'START'}
         </button>
