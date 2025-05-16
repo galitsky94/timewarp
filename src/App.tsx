@@ -21,7 +21,8 @@ const App: React.FC = () => {
 
   const handleTryAgain = () => {
     resetTest();
-    setCurrentScreen('welcome');
+    startTest(); // Start the test immediately
+    setCurrentScreen('test'); // Go directly to test screen
   };
 
   return (
