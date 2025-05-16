@@ -40,49 +40,51 @@ const TestScreen: React.FC<TestScreenProps> = ({ onStop, startTest }) => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
-      {/* Instruction text - only show before test has started */}
-      {!testStarted && (
-        <p className="text-gray-500 text-sm mono tracking-widest mb-4">
-          STOP AT 10 SECONDS
-        </p>
-      )}
+      <div className="flex flex-col items-center justify-between h-[600px]">
+        {/* Instruction text - only show before test has started */}
+        {!testStarted && (
+          <p className="text-gray-400 text-lg mono tracking-widest mb-8">
+            STOP AT 10 SECONDS
+          </p>
+        )}
 
-      {/* Minimal clock visualization */}
-      <div className="relative w-80 h-80 mb-12">
-        <div className="absolute inset-0 rounded-full border border-white/20 flex items-center justify-center overflow-hidden">
-          {clockMarkers}
+        {/* Minimal clock visualization */}
+        <div className="relative w-80 h-80">
+          <div className="absolute inset-0 rounded-full border border-white/20 flex items-center justify-center overflow-hidden">
+            {clockMarkers}
 
-          {/* Center point */}
-          <div className="absolute w-3 h-3 rounded-full bg-white z-10"></div>
+            {/* Center point */}
+            <div className="absolute w-3 h-3 rounded-full bg-white z-10"></div>
 
-          {/* Second hand - only show before test starts */}
-          {!testStarted && (
-            <div
-              className="absolute w-0.5 bg-white/80 animate-rotate"
-              style={{
-                height: '150px',
-                bottom: '50%',
-                left: '50%',
-                transformOrigin: 'bottom center',
-                zIndex: 5
-              }}
-            ></div>
-          )}
+            {/* Second hand - only show before test starts */}
+            {!testStarted && (
+              <div
+                className="absolute w-0.5 bg-white/80 animate-rotate"
+                style={{
+                  height: '150px',
+                  bottom: '50%',
+                  left: '50%',
+                  transformOrigin: 'bottom center',
+                  zIndex: 5
+                }}
+              ></div>
+            )}
+          </div>
         </div>
+
+        {testStarted && showTip && (
+          <div className="absolute text-white/50 text-sm animate-fade-out mono tracking-wide">
+            Feel the time passing...
+          </div>
+        )}
+
+        <button
+          onClick={testStarted ? onStop : handleStart}
+          className="bg-white text-black font-mono text-xl py-4 px-12 rounded-full hover:bg-white/90 transition-colors mt-8"
+        >
+          {testStarted ? 'STOP' : 'START'}
+        </button>
       </div>
-
-      {testStarted && showTip && (
-        <div className="absolute text-white/50 text-sm animate-fade-out mono tracking-wide">
-          Feel the time passing...
-        </div>
-      )}
-
-      <button
-        onClick={testStarted ? onStop : handleStart}
-        className="bg-white text-black font-mono text-xl py-4 px-12 rounded-full hover:bg-white/90 transition-colors"
-      >
-        {testStarted ? 'STOP' : 'START'}
-      </button>
     </div>
   );
 };
