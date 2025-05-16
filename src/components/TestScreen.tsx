@@ -6,7 +6,6 @@ interface TestScreenProps {
 
 const TestScreen: React.FC<TestScreenProps> = ({ onStop }) => {
   const [showTip, setShowTip] = useState(true);
-  const [secondsElapsed, setSecondsElapsed] = useState(0);
 
   // Create an array of 60 markers to represent seconds
   const clockMarkers = Array.from({ length: 60 }, (_, i) => {
@@ -27,23 +26,13 @@ const TestScreen: React.FC<TestScreenProps> = ({ onStop }) => {
     );
   });
 
-  // Update progress subtly (this doesn't reflect actual time)
+  // Hide tip after 1.5 seconds
   useEffect(() => {
-    const interval = setInterval(() => {
-      setSecondsElapsed(prev => {
-        // Add a random small amount to make it less predictable
-        // This is intentionally not accurate to avoid giving cues
-        return prev + (Math.random() * 0.15);
-      });
-    }, 200);
-
-    // Hide tip after 1.5 seconds
     const tipTimer = setTimeout(() => {
       setShowTip(false);
     }, 1500);
 
     return () => {
-      clearInterval(interval);
       clearTimeout(tipTimer);
     };
   }, []);
@@ -58,11 +47,10 @@ const TestScreen: React.FC<TestScreenProps> = ({ onStop }) => {
           {/* Center point */}
           <div className="absolute w-3 h-3 rounded-full bg-white z-10"></div>
 
-          {/* Second hand - moves very slightly */}
+          {/* Second hand - use the same animation as welcome page */}
           <div
-            className="absolute w-0.5 bg-white/80 transition-transform duration-200"
+            className="absolute w-0.5 bg-white/80 animate-rotate"
             style={{
-              transform: `rotate(${secondsElapsed * 6}deg)`,
               height: '150px',
               bottom: '50%',
               left: '50%',
