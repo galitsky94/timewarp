@@ -41,12 +41,10 @@ const TestScreen: React.FC<TestScreenProps> = ({ onStop, startTest }) => {
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
       <div className="flex flex-col items-center gap-6">
-        {/* Instruction text - only show before test has started */}
-        {!testStarted && (
-          <p className="text-gray-400 text-lg mono tracking-widest">
-            STOP AT 10 SECONDS
-          </p>
-        )}
+        {/* Always keep the instruction text visible, regardless of test state */}
+        <p className="text-gray-400 text-lg mono tracking-widest">
+          STOP AT 10 SECONDS
+        </p>
 
         {/* Minimal clock visualization */}
         <div className="relative w-80 h-80">
