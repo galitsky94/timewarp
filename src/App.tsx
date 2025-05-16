@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Welcome from './components/Welcome';
 import TestScreen from './components/TestScreen';
 import Results from './components/Results';
-import Footer from './components/Footer';
 import { useTimeWarp } from './hooks/useTimeWarp';
 
 const App: React.FC = () => {
@@ -26,8 +25,8 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white">
-      <main className="flex-1">
+    <div className="h-screen flex flex-col bg-black text-white overflow-hidden">
+      <main className="flex-1 flex items-center justify-center">
         {currentScreen === 'welcome' && (
           <Welcome onStart={handleStartTest} />
         )}
@@ -40,8 +39,6 @@ const App: React.FC = () => {
           <Results result={result} onTryAgain={handleTryAgain} />
         )}
       </main>
-
-      {currentScreen !== 'test' && <Footer />}
     </div>
   );
 };

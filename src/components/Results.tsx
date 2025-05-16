@@ -20,7 +20,7 @@ const Results: React.FC<ResultsProps> = ({ result, onTryAgain }) => {
   );
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen max-w-md mx-auto px-4 py-8">
+    <div className="flex flex-col items-center justify-center w-full h-full px-4">
       <div className="mono text-xs tracking-widest text-gray-500 mb-2">YOUR RESULT</div>
 
       <div className="text-7xl font-mono font-bold text-white mb-1">
@@ -28,17 +28,17 @@ const Results: React.FC<ResultsProps> = ({ result, onTryAgain }) => {
         <span className="text-2xl">s</span>
       </div>
 
-      <div className="mb-10 text-center">
+      <div className="mb-6 text-center">
         <p className="text-gray-400 text-sm mb-1">
           You were {formattedAccuracy}s {isEarly ? 'early' : 'late'}
         </p>
         <h2 className="text-white text-xl font-mono tracking-wide">{category.label.toUpperCase()}</h2>
       </div>
 
-      <div className="w-full h-px bg-white/10 mb-10"></div>
+      <div className="w-full h-px bg-white/10 mb-6 max-w-xs"></div>
 
       <div className="text-xs text-gray-500 mono tracking-wider mb-1">TIME PERCEPTION</div>
-      <p className="text-gray-300 text-center mb-10 text-sm max-w-xs">{category.description}</p>
+      <p className="text-gray-300 text-center mb-6 text-sm max-w-xs">{category.description}</p>
 
       <div className="flex flex-col space-y-4 w-full max-w-xs">
         <button

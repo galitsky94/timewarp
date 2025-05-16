@@ -49,9 +49,9 @@ const TestScreen: React.FC<TestScreenProps> = ({ onStop }) => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black">
+    <div className="flex flex-col items-center justify-center w-full h-full">
       {/* Minimal clock visualization */}
-      <div className="relative w-80 h-80 mb-16">
+      <div className="relative w-80 h-80 mb-12">
         <div className="absolute inset-0 rounded-full border border-white/20 flex items-center justify-center overflow-hidden">
           {clockMarkers}
 
@@ -74,7 +74,7 @@ const TestScreen: React.FC<TestScreenProps> = ({ onStop }) => {
       </div>
 
       {showTip && (
-        <div className="absolute top-1/4 text-white/50 text-sm animate-fade-out mono tracking-wide">
+        <div className="absolute text-white/50 text-sm animate-fade-out mono tracking-wide">
           Feel the time passing...
         </div>
       )}

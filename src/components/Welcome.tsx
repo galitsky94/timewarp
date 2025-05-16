@@ -25,8 +25,8 @@ const Welcome: React.FC<WelcomeProps> = ({ onStart }) => {
   });
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen text-center px-4 max-w-xl mx-auto">
-      <div className="relative w-64 h-64 mb-12">
+    <div className="flex flex-col items-center justify-center w-full h-full px-4 text-center max-w-xl mx-auto">
+      <div className="relative w-64 h-64 mb-8">
         <div className="absolute inset-0 rounded-full border border-white/20 flex items-center justify-center">
           {clockMarkers}
           <div className="absolute w-3 h-3 rounded-full bg-white z-10"></div>
@@ -47,7 +47,7 @@ const Welcome: React.FC<WelcomeProps> = ({ onStart }) => {
         TIME WARP
       </h1>
 
-      <p className="text-gray-400 mb-10 text-lg max-w-xs">
+      <p className="text-gray-400 mb-8 text-lg max-w-xs">
         Is your mind faster than time?
       </p>
 
